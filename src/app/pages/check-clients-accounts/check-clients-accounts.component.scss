@@ -1,0 +1,49 @@
+.title {
+    background-color: #ffffff;
+    margin: 0px;
+    height: auto;
+    padding: 23px 20px;
+}
+
+h1 {
+    color: #f26e29;
+    font-family: "Raleway", sans-serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0px;
+}
+
+th,
+td {
+    font-family: 'Raley', sans-serif;
+    font-size: 17px;
+
+}
+
+th {
+    color: #F26E29;
+    font-weight: 600;
+}
+
+.button-white{
+    background-color: white;
+    color:black;
+    mat-icon{
+      color: black;
+    }
+  }
+
+.button-white:hover{
+    background-color: #002C79;
+    color:white;
+    mat-icon{
+      color: white;
+    }
+}
+
+.botones button{
+  margin-right: 0px;
+  margin-left: 10px;
+  padding: 6px 15px;
+}

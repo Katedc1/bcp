@@ -6,15 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  showMenu = false;
+  isSidebarOpen = false;
 
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
-  }
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  selectHamburger(){
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
 }

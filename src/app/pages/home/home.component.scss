@@ -1,0 +1,42 @@
+.title {
+    background-color: #ffffff;
+    margin: 0px;
+    height: auto;
+    padding: 23px 20px;
+}
+
+h1 {
+    color: #f26e29;
+    font-family: "Raleway", sans-serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0px;
+}
+
+.card{
+    background-color: #002C79;
+    width: 16%;
+    margin:40px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+h3{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
+    margin: 0px;
+    text-align: center;
+}
+
+img{
+    width: 40%;
+}
+
+.card:hover{
+    background-color: #f26e29;
+   cursor: pointer;
+}

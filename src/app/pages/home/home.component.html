@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="title">
+    <h1>¡Bienvenido!</h1>
+</div>
+
+<div class="flex">
+    <div class="card" (click)="redireccionar('/add-bank-account')">
+        <div class="imagen img w-full flex justify-center p-10">
+            <img src="assets/img/crear-w.png">
+        </div>
+        <div class="title-card">
+            <h3>Registrar Clientes y Cuentas</h3>
+        </div>
+    </div>
+    
+    <div class="card" (click)="redireccionar('/check-clients-accounts')">
+        <div class="img w-full flex justify-center p-10">
+            <img src="assets/img/buscar-w.png">
+        </div>
+        <div class="title-card">
+            <h3>Consultar Clientes y Cuentas</h3>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

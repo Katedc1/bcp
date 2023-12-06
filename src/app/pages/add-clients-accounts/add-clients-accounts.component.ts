@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-bank-account',
@@ -124,8 +125,8 @@ export class AddBankAccountComponent {
     },
   ];
 
-  constructor(private fb: FormBuilder) {
-  this.validarDate();
+  constructor(private fb: FormBuilder,private _router: Router) {
+    this.validarDate();
 
     this.formClient = this.fb.group({
       documento: ['', [Validators.required,Validators.pattern(/^[0-9]+$/)]],
@@ -134,7 +135,6 @@ export class AddBankAccountComponent {
       materno: ['', [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]],
       fechanacimiento: ['', [Validators.required]],
       domicilio: ['', [Validators.required]],
-
       estadocivil: ['', [Validators.required]],
       nacionalidad: ['', [Validators.required]],
     });
@@ -146,6 +146,9 @@ export class AddBankAccountComponent {
       tipodemoneda: ['', [Validators.required]],
       sucursal: ['', [Validators.required]],
     });
+
+    this.formCuenta.get('documento')?.disable();
+   
    }
 
   ngOnInit(): void {
@@ -166,6 +169,7 @@ export class AddBankAccountComponent {
       console.log('Form submitted:', this.formCuenta.value);
     }else{
       console.log('no valido')
+      this.formClient.markAllAsTouched();
     }
   }
   
@@ -177,4 +181,7 @@ export class AddBankAccountComponent {
     this.maxDate = year+'-'+month+'-'+'0'+day;
   }
 
+  redireccionar(route:string){
+    this._router.navigate([route]);
+  }
 }

@@ -3,8 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AddBankAccountComponent } from './pages/add-clients-accounts/add-clients-accounts.component';
 import { CheckClientsAccountsComponent } from './pages/check-clients-accounts/check-clients-accounts.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
+  {
+    path:'',
+    component:HomeComponent,
+    loadChildren:() => import('./pages/home/home.module').then((m) => m.HomeModule)
+  },
   {
     path:'add-bank-account',
     component:AddBankAccountComponent,

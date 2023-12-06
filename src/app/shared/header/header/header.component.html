@@ -1,3 +1,36 @@
-<div class="container-header">
-    <img src="assets/img/Logo_BCP.png">
+<div class="container-header flex justify-between">
+    <div class="flex">
+        <div class="flag">
+            <div class="stripe red"></div>
+            <div class="stripe yellow"></div>
+            <div class="stripe green"></div>
+        </div>
+        
+        <a href="#"><img class="ml-4" src="assets/img/Logo_BCP.png"></a>
+    </div>
+    
+    <div *ngIf="!isSidebarOpen" class="flex flex-col items-center justify-center mr-3">
+        <mat-icon (click)="selectHamburger()">menu</mat-icon>
+    </div>
+
+    <div *ngIf="isSidebarOpen" class="flex flex-col items-center justify-center mr-3">
+        <mat-icon (click)="selectHamburger()">close</mat-icon>
+    </div>
 </div>
+
+<div class="sidebar" [ngClass]="{'sidebar-open': isSidebarOpen}">   
+    <nav class="mt-3">
+        <ul>
+          <li><a href="#">Inicio</a></li>  
+          <li><a href="/add-bank-account">Registrar Clientes y Cuentas</a></li>
+          <li><a href="/check-clients-accounts">Consultar Clientes y Cuentas</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="overlay" [ngClass]="{'overlay-open': isSidebarOpen}"></div>
+
+
+
+  
+

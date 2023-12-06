@@ -2,23 +2,73 @@
   background-color: #ffffff;
   margin: 0px;
   height: auto;
-  padding: 15px 20px;
-}
-
-form {
-  border-radius: 8px;
-  padding: 50px 150px;
-  background-color: #ffffff;
+  padding: 23px 20px;
 }
 
 h1 {
   color: #f26e29;
-  font-family: "Roboto", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-style: italic;
   font-size: 30px;
-  font-weight: 580;
+  font-weight: 800;
   margin: 0px;
 }
 
+.container-stepper{
+  //top:100vh;
+  bottom: 100vh;
+  //margin-bottom: 105px;
+}
+
+form {
+  border-radius: 8px;
+  padding: 0px 10px;
+  background-color: #ffffff;
+}
+
+.title-form{
+  font-family: 'Raleway',sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #f26e29;
+}
+
 mat-form-field {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.title-stepper{
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+}
+
+button{
+  margin-right: 10px;
+}
+
+.botones button{
+  margin-right: 0px;
+  margin-left: 10px;
+  padding: 6px 15px;
+}
+
+.button-orange{
+  background-color: #f26e29;
+  color:white;
+}
+
+.button-blue, .button-white:hover{
+  background-color: #002C79;
+  color:white;
+  mat-icon{
+    color: white;
+  }
+}
+
+.button-white, button:hover{
+  background-color: white;
+  color:black;
+  mat-icon{
+    color: black;
+  }
 }

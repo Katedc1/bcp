@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-
+    MatTableModule,
+    MatPaginatorModule
     
   ],
   providers: [],

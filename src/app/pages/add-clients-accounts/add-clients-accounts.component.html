@@ -14,368 +14,212 @@
   </button>
 </div>
 
-
-<!-- Formulario Registro Cliente -->
-
-<!-- <div class="form-client flex justify-center my-10" >
-  <form [formGroup]="formClient" class="flex flex-wrap w-2/3" >
-    <div class="w-full">
-      <h2>Registro de Cliente</h2>
-    </div>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Nombres</mat-label>
-      <input matInput formControlName="nombres" />
-      <mat-error *ngIf="  formClient.controls['nombres'].invalid || formClient.controls['nombres'].touched">
-        <mat-error *ngIf="formClient.controls['nombres'].errors?.['required']">
-          El campo es requerido
-        </mat-error>
-        <mat-error *ngIf="formClient.controls['nombres'].errors?.['pattern']">
-          Ingrese solamente letras
-        </mat-error>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Paterno</mat-label>
-      <input matInput formControlName="paterno" />
-      <mat-error *ngIf="  formClient.controls['paterno'].invalid || formClient.controls['paterno'].touched">
-        <mat-error *ngIf="formClient.controls['paterno'].errors?.['required']">
-          El campo es requerido
-        </mat-error>
-        <mat-error *ngIf="formClient.controls['paterno'].errors?.['pattern']">
-          Ingrese solamente letras
-        </mat-error>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Materno</mat-label>
-      <input matInput formControlName="materno" />
-      <mat-error *ngIf="  formClient.controls['materno'].invalid || formClient.controls['materno'].touched">
-        <mat-error *ngIf="formClient.controls['materno'].errors?.['required']">
-          El campo es requerido
-        </mat-error>
-        <mat-error *ngIf="formClient.controls['materno'].errors?.['pattern']">
-          Ingrese solamente letras
-        </mat-error>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Fecha de Nacimiento</mat-label>
-      <input matInput formControlName="fechanacimiento" type="date" [max]="maxDate"/>
-      <mat-error *ngIf="formClient.controls['fechanacimiento'].invalid || formClient.controls['fechanacimiento'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Documento</mat-label>
-      <input matInput formControlName="documento" />
-        <mat-error *ngIf="  formClient.controls['documento'].invalid || formClient.controls['documento'].touched ">
-          <mat-error *ngIf="formClient.controls['documento'].errors?.['required']">
-            El campo es requerido
-          </mat-error>
-          <mat-error *ngIf="formClient.controls['documento'].errors?.['pattern']">
-            Ingrese solamente números positivos
-          </mat-error>
-        </mat-error>
-
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Estado Civil</mat-label>
-      <mat-select formControlName="estadocivil">
-        <mat-option *ngFor="let item of listStatus" [value]="item.description">{{item.description}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="formClient.controls['estadocivil'].invalid || formClient.controls['estadocivil'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Domicilio</mat-label>
-      <input matInput formControlName="domicilio" />
-      <mat-error *ngIf="formClient.controls['domicilio'].invalid || formClient.controls['domicilio'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Nacionalidad</mat-label>
-      <mat-select formControlName="nacionalidad">
-        <mat-option *ngFor="let item of listNationality" [value]="item.description">{{item.description}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="formClient.controls['nacionalidad'].invalid || formClient.controls['nacionalidad'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-    
-    <div class="flex justify-center w-full">
-      <button mat-raised-button color="primary"(click)="registrarCliente()">Registrar Cliente</button>
-    </div>
-    
-  </form>
-</div> -->
-
-
-<!-- Formulario Registro Cuenta -->
-<!-- <div class="form-client flex justify-center my-10" >
-  <form [formGroup]="formCuenta" class="flex flex-wrap w-2/3" >
-    <div class="w-full">
-      <h2>Registro de Cliente</h2>
-    </div>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline" >
-      <mat-label>Documento</mat-label>
-      <input matInput formControlName="documento" [(ngModel)]="this.formClient.value.documento" />
-      <mat-error *ngIf="formCuenta.controls['documento'].invalid || formCuenta.controls['documento'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Nombre Cuenta</mat-label>
-      <input matInput formControlName="nombrecuenta" />
-      <mat-error *ngIf="formCuenta.controls['nombrecuenta'].invalid || formCuenta.controls['nombrecuenta'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Tipo de Cuenta</mat-label>
-      <mat-select formControlName="tipocuenta">
-        <mat-option *ngFor="let item of listTypeAccount" [value]="item.description">{{item.description}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="formCuenta.controls['tipocuenta'].invalid || formCuenta.controls['tipocuenta'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Tipo de Moneda</mat-label>
-      <mat-select formControlName="tipodemoneda">
-        <mat-option *ngFor="let item of listTypeCurrency" [value]="item.description">{{item.description}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="formCuenta.controls['tipodemoneda'].invalid || formCuenta.controls['tipodemoneda'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-1/3 px-2" appearance="outline">
-      <mat-label>Sucursal</mat-label>
-      <mat-select formControlName="sucursal">
-        <mat-option *ngFor="let item of listBranch" [value]="item.description">{{item.description}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="formCuenta.controls['sucursal'].invalid || formCuenta.controls['sucursal'].touched">El campo es
-        requerido</mat-error>
-    </mat-form-field>
-    
-    <div class="flex justify-center w-full">
-      <button mat-raised-button color="primary"(click)="registrarCuenta()">Registrar Cuenta</button>
-    </div>
-    
-  </form>
-</div> -->
-
-
 <div class="container-stepper flex justify-center w-full">
+  <div class="w-11/12">
+    <mat-vertical-stepper linear="true" #stepper animationDuration="2000" class="mat-elevation-z8">
+      <mat-step optional="false">
+        <!-- <form [formGroup]="formClient"> -->
+        <ng-template matStepLabel>Registro de Cliente</ng-template>
 
- <div class="w-11/12">
-<mat-vertical-stepper linear="true" #stepper animationDuration="2000" class="mat-elevation-z8">
-  <mat-step optional="false">
-    <!-- <form [formGroup]="formClient"> -->
-      <ng-template matStepLabel >Registro de Cliente</ng-template>
-      
-      <div class="form-client flex justify-center my-10" >
-        <form [formGroup]="formClient" class="flex flex-wrap w-full" >
-          <div class="w-full mb-4">
-            <label class="title-form pl-2">Registro de Cliente</label>
-          </div>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Nombres</mat-label>
-            <input matInput formControlName="nombres" />
-            <mat-error *ngIf="  formClient.controls['nombres'].invalid || formClient.controls['nombres'].touched">
-              <mat-error *ngIf="formClient.controls['nombres'].errors?.['required']">
-                El campo es requerido
-              </mat-error>
-              <mat-error *ngIf="formClient.controls['nombres'].errors?.['pattern']">
-                Ingrese solamente letras
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Paterno</mat-label>
-            <input matInput formControlName="paterno" />
-            <mat-error *ngIf="  formClient.controls['paterno'].invalid || formClient.controls['paterno'].touched">
-              <mat-error *ngIf="formClient.controls['paterno'].errors?.['required']">
-                El campo es requerido
-              </mat-error>
-              <mat-error *ngIf="formClient.controls['paterno'].errors?.['pattern']">
-                Ingrese solamente letras
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Materno</mat-label>
-            <input matInput formControlName="materno" />
-            <mat-error *ngIf="  formClient.controls['materno'].invalid || formClient.controls['materno'].touched">
-              <mat-error *ngIf="formClient.controls['materno'].errors?.['required']">
-                El campo es requerido
-              </mat-error>
-              <mat-error *ngIf="formClient.controls['materno'].errors?.['pattern']">
-                Ingrese solamente letras
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Fecha de Nacimiento</mat-label>
-            <input matInput formControlName="fechanacimiento" type="date" [max]="maxDate"/>
-            <mat-error *ngIf="formClient.controls['fechanacimiento'].invalid || formClient.controls['fechanacimiento'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Documento</mat-label>
-            <input matInput formControlName="documento" />
-              <mat-error *ngIf="  formClient.controls['documento'].invalid || formClient.controls['documento'].touched ">
-                <mat-error *ngIf="formClient.controls['documento'].errors?.['required']">
+        <div class="form-client flex justify-center my-10">
+          <form [formGroup]="formClient" class="flex flex-wrap w-full">
+            <div class="w-full mb-4">
+              <label class="title-form pl-2">Registro de Cliente</label>
+            </div>
+
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Nombres</mat-label>
+              <input matInput formControlName="nombres_vc" />
+              <mat-error *ngIf="
+                  formClient.controls['nombres_vc'].invalid ||
+                  formClient.controls['nombres_vc'].touched
+                ">
+                <mat-error *ngIf="formClient.controls['nombres_vc'].errors?.['required']">
                   El campo es requerido
                 </mat-error>
-                <mat-error *ngIf="formClient.controls['documento'].errors?.['pattern']">
+                <mat-error *ngIf="formClient.controls['nombres_vc'].errors?.['pattern']">
+                  Ingrese solamente letras
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Paterno</mat-label>
+              <input matInput formControlName="paterno_vc" />
+              <mat-error *ngIf="
+                  formClient.controls['paterno_vc'].invalid ||
+                  formClient.controls['paterno_vc'].touched
+                ">
+                <mat-error *ngIf="formClient.controls['paterno_vc'].errors?.['required']">
+                  El campo es requerido
+                </mat-error>
+                <mat-error *ngIf="formClient.controls['paterno_vc'].errors?.['pattern']">
+                  Ingrese solamente letras
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Materno</mat-label>
+              <input matInput formControlName="materno_vc" />
+              <mat-error *ngIf="
+                  formClient.controls['materno_vc'].invalid ||
+                  formClient.controls['materno_vc'].touched
+                ">
+                <mat-error *ngIf="formClient.controls['materno_vc'].errors?.['required']">
+                  El campo es requerido
+                </mat-error>
+                <mat-error *ngIf="formClient.controls['materno_vc'].errors?.['pattern']">
+                  Ingrese solamente letras
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input matInput formControlName="fecha_nacimiento_vc" type="date" [max]="maxDate" />
+              <mat-error *ngIf="
+                  formClient.controls['fecha_nacimiento_vc'].invalid ||
+                  formClient.controls['fecha_nacimiento_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Documento</mat-label>
+              <input matInput formControlName="documento_vc" />
+              <mat-error *ngIf="
+                  formClient.controls['documento_vc'].invalid ||
+                  formClient.controls['documento_vc'].touched
+                ">
+                <mat-error *ngIf="formClient.controls['documento_vc'].errors?.['required']">
+                  El campo es requerido
+                </mat-error>
+                <mat-error *ngIf="formClient.controls['documento_vc'].errors?.['pattern']">
                   Ingrese solamente números positivos
                 </mat-error>
               </mat-error>
-      
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Estado Civil</mat-label>
-            <mat-select formControlName="estadocivil">
-              <mat-option *ngFor="let item of listStatus" [value]="item.description">{{item.description}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="formClient.controls['estadocivil'].invalid || formClient.controls['estadocivil'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Domicilio</mat-label>
-            <input matInput formControlName="domicilio" />
-            <mat-error *ngIf="formClient.controls['domicilio'].invalid || formClient.controls['domicilio'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Nacionalidad</mat-label>
-            <mat-select formControlName="nacionalidad">
-              <mat-option *ngFor="let item of listNationality" [value]="item.description">{{item.description}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="formClient.controls['nacionalidad'].invalid || formClient.controls['nacionalidad'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-          
-          <!-- <div class="flex justify-center w-full">
-            <button mat-raised-button color="primary"(click)="registrarCliente()">Registrar Cliente</button>
-          </div> -->
+            </mat-form-field>
 
-          <div class="w-full flex justify-start">
-            <button class="button-blue" mat-raised-button matStepperNext>Siguiente</button>
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Estado Civil</mat-label>
+              <mat-select formControlName="estado_civil_vc">
+                <mat-option *ngFor="let item of listStatus" [value]="item.description">{{ item.description
+                  }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                  formClient.controls['estado_civil_vc'].invalid ||
+                  formClient.controls['estado_civil_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
-            <button class="button-orange" mat-raised-button (click)="registrarCliente()">Registrar Cliente</button>
-          </div>
-          
-          
-        </form>
-      </div>
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Domicilio</mat-label>
+              <input matInput formControlName="domicilio_vc" />
+              <mat-error *ngIf="
+                  formClient.controls['domicilio_vc'].invalid ||
+                  formClient.controls['domicilio_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Nacionalidad</mat-label>
+              <mat-select formControlName="nacionalidad_vc">
+                <mat-option *ngFor="let item of listNationality" [value]="item.description">{{ item.description
+                  }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                  formClient.controls['nacionalidad_vc'].invalid ||
+                  formClient.controls['nacionalidad_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
-      <!-- <div class="w-64 flex justify-between">
-        <button class="mr-10"  mat-raised-button (click)="registrarCliente()" style="background-color: #f26e29; color:white">Registrar Cliente</button>
-        <button mat-raised-button matStepperNext style="
-        background-color: #002C79; color: white;" >Siguiente</button>
-      </div> -->
-    <!-- </form> -->
-  </mat-step>
+            <div class="w-full flex justify-start">
+              <button class="button-blue" mat-raised-button matStepperNext>
+                Siguiente
+              </button>
 
+              <button class="button-orange" mat-raised-button (click)="registrarCliente(stepper)">
+                Registrar Cliente
+              </button>
+            </div>
+          </form>
+        </div>
 
+        <!-- </form> -->
+      </mat-step>
 
-  <mat-step>
-    <!-- <form [formGroup]="secondFormGroup"> -->
-      <ng-template matStepLabel>Registro de Cuenta</ng-template>
-      
-      <div class="form-client flex justify-center my-10" >
-        <form [formGroup]="formCuenta" class="flex flex-wrap w-full" >
-          <div class="w-full mb-4">
-            <label class="title-form pl-2">Registro de Cuenta</label>
-          </div>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline" >
-            <mat-label>Documento</mat-label>
-            <input matInput formControlName="documento" [(ngModel)]="this.formClient.value.documento" />
-            <mat-error *ngIf="formCuenta.controls['documento'].invalid || formCuenta.controls['documento'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Nombre Cuenta</mat-label>
-            <input matInput formControlName="nombrecuenta" />
-            <mat-error *ngIf="formCuenta.controls['nombrecuenta'].invalid || formCuenta.controls['nombrecuenta'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Tipo de Cuenta</mat-label>
-            <mat-select formControlName="tipocuenta">
-              <mat-option *ngFor="let item of listTypeAccount" [value]="item.description">{{item.description}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="formCuenta.controls['tipocuenta'].invalid || formCuenta.controls['tipocuenta'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Tipo de Moneda</mat-label>
-            <mat-select formControlName="tipodemoneda">
-              <mat-option *ngFor="let item of listTypeCurrency" [value]="item.description">{{item.description}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="formCuenta.controls['tipodemoneda'].invalid || formCuenta.controls['tipodemoneda'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-      
-          <mat-form-field class="w-1/3 px-2" appearance="outline">
-            <mat-label>Sucursal</mat-label>
-            <mat-select formControlName="sucursal">
-              <mat-option *ngFor="let item of listBranch" [value]="item.description">{{item.description}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="formCuenta.controls['sucursal'].invalid || formCuenta.controls['sucursal'].touched">El campo es
-              requerido</mat-error>
-          </mat-form-field>
-          
-          <!-- <div class="flex justify-center w-full">
-            <button mat-raised-button color="primary"(click)="registrarCuenta()">Registrar Cuenta</button>
-          </div> -->
+      <mat-step>
+        <ng-template matStepLabel>Registro de Cuenta</ng-template>
 
-          <div class="w-full flex justify-start">
-            <button mat-raised-button matStepperPrevious class="button-blue" >Anterior</button>
+        <div class="form-client flex justify-center my-10">
+          <form [formGroup]="formCuenta" class="flex flex-wrap w-full">
+            <div class="w-full mb-4">
+              <label class="title-form pl-2">Registro de Cuenta</label>
+            </div>
 
-            <button mat-raised-button (click)="registrarCuenta()" class="button-orange">Registrar Cuenta</button>
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Documento</mat-label>
+              <input matInput formControlName="cliente_documento_vc" [(ngModel)]="this.formClient.value.documento_vc" />
+              <mat-error *ngIf="
+                  formCuenta.controls['cliente_documento_vc'].invalid ||
+                  formCuenta.controls['cliente_documento_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
-            
-          </div>
-          
-        </form>
-      </div>
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Nombre Cuenta</mat-label>
+              <input matInput formControlName="nombre_cuenta_vc" />
+              <mat-error *ngIf="
+                  formCuenta.controls['nombre_cuenta_vc'].invalid ||
+                  formCuenta.controls['nombre_cuenta_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Tipo de Cuenta</mat-label>
+              <mat-select formControlName="tipo_cuenta_vc">
+                <mat-option *ngFor="let item of listTypeAccount" [value]="item.description">{{ item.description
+                  }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                  formCuenta.controls['tipo_cuenta_vc'].invalid ||
+                  formCuenta.controls['tipo_cuenta_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Tipo de Moneda</mat-label>
+              <mat-select formControlName="tipo_moneda_vc">
+                <mat-option *ngFor="let item of listTypeCurrency" [value]="item.description">{{ item.description
+                  }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                  formCuenta.controls['tipo_moneda_vc'].invalid ||
+                  formCuenta.controls['tipo_moneda_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
-      <!-- <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div> -->
-    <!-- </form> -->
-  </mat-step>
+            <mat-form-field class="w-1/3 px-2" appearance="outline">
+              <mat-label>Sucursal</mat-label>
+              <mat-select formControlName="sucursal_vc">
+                <mat-option *ngFor="let item of listBranch" [value]="item.description">{{ item.description
+                  }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                  formCuenta.controls['sucursal_vc'].invalid ||
+                  formCuenta.controls['sucursal_vc'].touched
+                ">El campo es requerido</mat-error>
+            </mat-form-field>
 
-</mat-vertical-stepper>
+            <div class="w-full flex justify-start">
+              <button mat-raised-button matStepperPrevious class="button-blue">Anterior</button>
+              <button mat-raised-button (click)="registrarCuenta()" class="button-orange">Registrar Cuenta</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </div>
-</div> 
-
 
 <app-footer></app-footer>
-
-

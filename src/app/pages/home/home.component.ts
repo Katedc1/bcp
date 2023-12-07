@@ -4,17 +4,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  constructor(private _router: Router) {}
 
-  constructor(private _router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  redireccionar(route:string){
+  redireccionar(route: string) {
     this._router.navigate([route]);
   }
-
 }

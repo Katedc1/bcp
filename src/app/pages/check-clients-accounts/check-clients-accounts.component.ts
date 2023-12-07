@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { CheckClientAccountService } from 'src/app/services/check-client-account/check-client-account.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-check-clients-accounts',
@@ -9,55 +11,50 @@ import { Router } from '@angular/router';
   styleUrls: ['./check-clients-accounts.component.scss'],
 })
 export class CheckClientsAccountsComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  listHeader=['position','Documento','Nombres','Paterno','Materno', 'TipoCuenta', 'TipoMoneda', 'Sucursal']
+  listHeader = ['position1','position2','position3','position4','position5','position6','position7'];
 
-  constructor(private _router: Router){}
+  constructor(
+    private _router: Router,
+    private _getRegisters: CheckClientAccountService
+  ) {}
+
+  ngOnInit(): void {
+    this.getRegisters();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  redireccionar(route:string){
+  redireccionar(route: string) {
     this._router.navigate([route]);
   }
+
+  getRegisters() {
+    this._getRegisters.getRegistros().subscribe({
+      next: (resp) => {
+        console.log('resp', resp);
+        const arrayDeObjetos: any[] = [];
+
+        resp.forEach((element: any[]) => {
+          let objeto: any = {};
+          for (let i = 0; i < element.length; i++) {
+            objeto[`position${i + 1}`] = element[i];
+          }
+          arrayDeObjetos.push(objeto);
+          this.dataSource.data = arrayDeObjetos;
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: '¡Error!',
+          text: "No existen registros",
+        });
+      },
+    });
+  }
 }
-
-export interface PeriodicElement {
-  position:number;
-  Documento: number;
-  Nombres: string;
-  Paterno: string;
-  Materno: string;
-  TipoCuenta: string;
-  TipoMoneda: string;
-  Sucursal: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 2,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 3,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 4,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 5,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 6,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 7,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 8,  Documento: 12345, Nombres: 'Maria Alejandra', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 9,  Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 10, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 11, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 12, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 13, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 14, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 15, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 16, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 17, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 18, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 19, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-  { position: 20, Documento: 12345, Nombres: 'Nicole Kate', Paterno: 'Duran', Materno: 'Corrales', TipoCuenta: 'AHORRO', TipoMoneda: 'BOLIVIANOS', Sucursal: 'LA PAZ' },
-];
-
-

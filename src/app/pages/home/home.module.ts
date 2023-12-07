@@ -5,8 +5,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HeaderModule } from 'src/app/shared/header/header/header.module';
 import { FooterModule } from 'src/app/shared/footer/footer.module';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent

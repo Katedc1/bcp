@@ -14,10 +14,8 @@ h1 {
   margin: 0px;
 }
 
-.container-stepper{
-  //top:100vh;
+.container-stepper {
   bottom: 100vh;
-  //margin-bottom: 105px;
 }
 
 form {
@@ -26,8 +24,8 @@ form {
   background-color: #ffffff;
 }
 
-.title-form{
-  font-family: 'Raleway',sans-serif;
+.title-form {
+  font-family: "Raleway", sans-serif;
   font-size: 25px;
   font-weight: 600;
   color: #f26e29;
@@ -37,38 +35,40 @@ mat-form-field {
   margin-bottom: 8px;
 }
 
-.title-stepper{
-  font-family: 'Raleway', sans-serif;
+.title-stepper {
+  font-family: "Raleway", sans-serif;
   font-size: 30px;
 }
 
-button{
+button {
   margin-right: 10px;
 }
 
-.botones button{
+.botones button {
   margin-right: 0px;
   margin-left: 10px;
   padding: 6px 15px;
 }
 
-.button-orange{
+.button-orange {
   background-color: #f26e29;
-  color:white;
+  color: white;
 }
 
-.button-blue, .button-white:hover{
-  background-color: #002C79;
-  color:white;
-  mat-icon{
+.button-blue,
+.button-white:hover {
+  background-color: #002c79;
+  color: white;
+  mat-icon {
     color: white;
   }
 }
 
-.button-white, button:hover{
+.button-white,
+button:hover {
   background-color: white;
-  color:black;
-  mat-icon{
+  color: black;
+  mat-icon {
     color: black;
   }
 }

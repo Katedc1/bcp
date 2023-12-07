@@ -16,13 +16,11 @@ const routes: Routes = [
     component:AddBankAccountComponent,
     loadChildren:() => import('./pages/add-clients-accounts/add-clients-accounts.module').then((m) => m.AddBankAccountModule)
   },
-  
   {
     path:'check-clients-accounts',
     component:CheckClientsAccountsComponent,
     loadChildren:() => import('./pages/check-clients-accounts/check-clients-accounts.module').then((m) => m.CheckClientsAccountsModule)
-  },
- 
+  }
 ]
 
 @NgModule({

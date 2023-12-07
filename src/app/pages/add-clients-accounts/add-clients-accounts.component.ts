@@ -1,187 +1,249 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStep, MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
-
+import { CreateClientService } from 'src/app/services/createAccount/create-client.service';
+import Swal from 'sweetalert2';
+import { CreateAccountService } from '../../services/createClient/create-account.service';
 @Component({
   selector: 'app-add-bank-account',
   templateUrl: './add-clients-accounts.component.html',
-  styleUrls: ['./add-clients-accounts.component.scss']
+  styleUrls: ['./add-clients-accounts.component.scss'],
 })
-
 export class AddBankAccountComponent {
   formClient: FormGroup;
   formCuenta: FormGroup;
   today = new Date();
-  maxDate:string = "";
+  maxDate: string = '';
 
-  listStatus=[
+  listStatus = [
     {
       id: 1,
-      description:'SOLTERO'
+      description: 'SOLTERO',
     },
     {
       id: 2,
-      description:'CASAD0'
+      description: 'CASAD0',
     },
     {
       id: 3,
-      description:'CONVIVIENTE'
+      description: 'CONVIVIENTE',
     },
   ];
 
-  listNationality=[
+  listNationality = [
     {
       id: 1,
-      description:'ARGENTINA'
+      description: 'ARGENTINA',
     },
     {
       id: 2,
-      description:'BOLIVIA'
+      description: 'BOLIVIA',
     },
     {
       id: 3,
-      description:'BRASIL'
+      description: 'BRASIL',
     },
     {
       id: 4,
-      description:'CHILE'
+      description: 'CHILE',
     },
     {
       id: 5,
-      description:'COLOMBIA'
+      description: 'COLOMBIA',
     },
     {
       id: 6,
-      description:'ECUADOR'
+      description: 'ECUADOR',
     },
     {
       id: 7,
-      description:'PERU'
+      description: 'PERU',
     },
     {
       id: 8,
-      description:'URUGUAY'
+      description: 'URUGUAY',
     },
   ];
 
-  listTypeAccount=[
+  listTypeAccount = [
     {
       id: 1,
-      description:'AHORRO'
+      description: 'AHORRO',
     },
     {
       id: 2,
-      description:'CORRIENTE'
-    }
+      description: 'CORRIENTE',
+    },
   ];
 
-  listTypeCurrency=[
+  listTypeCurrency = [
     {
       id: 1,
-      description:'BOLIVIANOS'
+      description: 'BOLIVIANOS',
     },
     {
       id: 2,
-      description:'DOLARES'
-    }
+      description: 'DOLARES',
+    },
   ];
 
-  listBranch=[
+  listBranch = [
     {
       id: 1,
-      description:'BENI'
+      description: 'BENI',
     },
     {
       id: 2,
-      description:'CHUQUISACA'
+      description: 'CHUQUISACA',
     },
     {
       id: 3,
-      description:'COCHABAMBA'
+      description: 'COCHABAMBA',
     },
     {
       id: 4,
-      description:'LA PAZ'
+      description: 'LA PAZ',
     },
     {
       id: 5,
-      description:'ORURO'
+      description: 'ORURO',
     },
     {
       id: 6,
-      description:'PANDO'
+      description: 'PANDO',
     },
     {
       id: 7,
-      description:'POTOSI'
+      description: 'POTOSI',
     },
     {
       id: 8,
-      description:'SANTA CRUZ'
+      description: 'SANTA CRUZ',
     },
     {
       id: 9,
-      description:'TARIJA'
+      description: 'TARIJA',
     },
   ];
 
-  constructor(private fb: FormBuilder,private _router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private _router: Router,
+    private _createClientService: CreateClientService,
+    private _createCuentaService: CreateAccountService
+  ) {
     this.validarDate();
 
     this.formClient = this.fb.group({
-      documento: ['', [Validators.required,Validators.pattern(/^[0-9]+$/)]],
-      nombres: ['', [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]],
-      paterno: ['', [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]],
-      materno: ['', [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]],
-      fechanacimiento: ['', [Validators.required]],
-      domicilio: ['', [Validators.required]],
-      estadocivil: ['', [Validators.required]],
-      nacionalidad: ['', [Validators.required]],
+      documento_vc: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
+      nombres_vc: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)],
+      ],
+      paterno_vc: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)],
+      ],
+      materno_vc: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)],
+      ],
+      fecha_nacimiento_vc: ['', [Validators.required]],
+      domicilio_vc: ['', [Validators.required]],
+      estado_civil_vc: ['', [Validators.required]],
+      nacionalidad_vc: ['', [Validators.required]],
     });
 
     this.formCuenta = this.fb.group({
-      documento: ['', Validators.required],
-      nombrecuenta: ['', [Validators.required]],
-      tipocuenta: ['', [Validators.required]],
-      tipodemoneda: ['', [Validators.required]],
-      sucursal: ['', [Validators.required]],
+      cliente_documento_vc: ['', Validators.required],
+      nombre_cuenta_vc: ['', [Validators.required]],
+      tipo_cuenta_vc: ['', [Validators.required]],
+      tipo_moneda_vc: ['', [Validators.required]],
+      sucursal_vc: ['', [Validators.required]],
     });
 
     this.formCuenta.get('documento')?.disable();
-   
-   }
-
-  ngOnInit(): void {
   }
 
-  registrarCliente() {
+  ngOnInit(): void {}
+
+  registrarCliente(stepper: MatStepper) {
     if (this.formClient.valid) {
-      console.log('valido')
+      console.log('valido');
       console.log('Form submitted:', this.formClient.value);
-    }else{
-      console.log('no valido')
-    }
-  }
+      this._createClientService.createClient(this.formClient.value).subscribe({
+        next: (resp) => {
+          console.log('resp', resp);
+          Swal.fire({
+            icon: 'success',
+            title: '¡OK!',
+            text: resp.mensaje,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          stepper.next();
+        },
+        error: (error) => {
+          console.log('Error', error);
 
-  registrarCuenta(){
-    if (this.formCuenta.valid) {
-      console.log('valido')
-      console.log('Form submitted:', this.formCuenta.value);
-    }else{
-      console.log('no valido')
+          Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: error.message,
+          });
+        },
+      });
+    } else {
+      console.log('no valido');
       this.formClient.markAllAsTouched();
     }
   }
-  
-  validarDate(){
+
+  registrarCuenta() {
+    if (this.formCuenta.valid) {
+      console.log('valido');
+      console.log('Form submitted:', this.formCuenta.value);
+      this._createCuentaService.createCuenta(this.formCuenta.value).subscribe({
+        next: (resp) => {
+          console.log('resp', resp);
+          Swal.fire({
+            icon: 'success',
+            title: '¡OK!',
+            text: resp.mensaje,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+
+          this.formCuenta.clearValidators();
+          this.formCuenta.updateValueAndValidity();
+          this.formCuenta.reset();
+        },
+        error: (error) => {
+          console.log('Error', error);
+
+          Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: error.error.mensaje,
+          });
+        },
+      });
+    } else {
+      console.log('no valido');
+      this.formCuenta.markAllAsTouched();
+    }
+  }
+
+  validarDate() {
     this.today.setFullYear(this.today.getFullYear() - 18);
     let day = this.today.getDate();
     let month = this.today.getMonth();
     let year = this.today.getFullYear();
-    this.maxDate = year+'-'+month+'-'+'0'+day;
+    this.maxDate = year + '-' + month + '-' + '0' + day;
   }
 
-  redireccionar(route:string){
+  redireccionar(route: string) {
     this._router.navigate([route]);
   }
 }

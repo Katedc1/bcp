@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +29,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
